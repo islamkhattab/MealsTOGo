@@ -2,7 +2,7 @@
   "expo": {
     "name": "MealsTOGo",
     "slug": "MealsTOGo",
-    "version": "1.0.0",
+    "version": "0.0.1",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
@@ -25,6 +25,17 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "9b2b59c0-e0e2-49c6-87b0-0e2033c10fd8"
+      }
+    },
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/9b2b59c0-e0e2-49c6-87b0-0e2033c10fd8"
     }
   }
 }
