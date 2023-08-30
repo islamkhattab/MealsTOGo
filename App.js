@@ -1,4 +1,5 @@
 import { StatusBar as ExpoStatusBar } from "expo-status-bar";
+import React from "react";
 import {
   StyleSheet,
   Text,
@@ -14,10 +15,10 @@ export default function App() {
   return (
     <>
       <SafeAreaView style={styles.container}>
-        <View style={styles.searchContainer}>
+        <View style={styles.search}>
           <Text>search</Text>
         </View>
-        <View style={styles.listContainer}>
+        <View style={styles.list}>
           <Text>List</Text>
         </View>
       </SafeAreaView>
@@ -31,11 +32,11 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingTop: isAndroid ? StatusBar.currentHeight : 0,
   },
-  searchContainer: {
+  search: {
     padding: 16,
     backgroundColor: "green",
   },
-  listContainer: {
+  list: {
     padding: 16,
     flex: 1,
     backgroundColor: "blue",
