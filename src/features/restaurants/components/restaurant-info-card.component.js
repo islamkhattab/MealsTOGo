@@ -11,9 +11,11 @@ const RestaurantCard = styled(Card)`
 const RestaurantCardCover = styled(Card.Cover)`
   padding: ${(props) => props.theme.space[3]};
   background-color: ${(props) => props.theme.colors.bg.primary};
+  font-size: ${(props) => props.theme.fontSizes.caption};
 `;
 
 const Title = styled(Text)`
+  font-family: ${(props) => props.theme.fonts.body};
   padding: ${(props) => props.theme.space[3]};
   color: ${(props) => props.theme.colors.ui.primary};
 `;
