@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { styled } from "styled-components/native";
-import { Searchbar, ActivityIndicator, MD3Colors } from "react-native-paper";
+import { Searchbar, ActivityIndicator } from "react-native-paper";
 
 import { RestaurantInfoCard } from "../components/restaurant-info-card.component";
 import {

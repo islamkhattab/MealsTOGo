@@ -11,6 +11,7 @@ import {
 } from "@expo-google-fonts/oswald";
 import { useFonts as useLato, Lato_400Regular } from "@expo-google-fonts/lato";
 
+import { LocationContextProvider } from "./src/services/location/location.context";
 import { ResturantsContextProvider } from "./src/services/restaurants/restaurants.context";
 
 import { RestuarantsScreen } from "./src/features/restaurants/screens/restaurants.screen";
@@ -52,20 +53,22 @@ export default function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <ResturantsContextProvider>
-        <NavigationContainer>
-          <Tab.Navigator screenOptions={createScreenOptions}>
-            <Tab.Screen name="Restaurants" component={RestuarantsScreen} />
-            <Tab.Screen name="Map" component={MapScreen} />
-            <Tab.Screen
-              name="Settings"
-              component={SettingsScreen}
-              options={{ tabBarBadge: 2 }}
-            />
-          </Tab.Navigator>
-          <ExpoStatusBar style="auto" />
-        </NavigationContainer>
-      </ResturantsContextProvider>
+      <LocationContextProvider>
+        <ResturantsContextProvider>
+          <NavigationContainer>
+            <Tab.Navigator screenOptions={createScreenOptions}>
+              <Tab.Screen name="Restaurants" component={RestuarantsScreen} />
+              <Tab.Screen name="Map" component={MapScreen} />
+              <Tab.Screen
+                name="Settings"
+                component={SettingsScreen}
+                options={{ tabBarBadge: 2 }}
+              />
+            </Tab.Navigator>
+            <ExpoStatusBar style="auto" />
+          </NavigationContainer>
+        </ResturantsContextProvider>
+      </LocationContextProvider>
     </ThemeProvider>
   );
 }
