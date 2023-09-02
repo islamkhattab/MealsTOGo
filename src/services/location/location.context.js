@@ -9,11 +9,18 @@ export const LocationContextProvider = ({ children }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  const onSearch = (searchKeyword = "Antwerp") => {
+  const onSearch = (searchKeyword) => {
     setIsLoading(true);
     setKeyword(searchKeyword);
+  };
 
-    locationRequest(searchKeyword.toLocaleLowerCase())
+  useEffect(() => {
+    if (!keyword || !keyword.length) {
+      // don't do anything
+      return;
+    }
+
+    locationRequest(keyword.toLocaleLowerCase())
       .then(locationTransform)
       .then((results) => {
         setIsLoading(false);
@@ -23,7 +30,7 @@ export const LocationContextProvider = ({ children }) => {
         setIsLoading(false);
         setError(err);
       });
-  };
+  }, [keyword]);
 
   useEffect(() => {
     onSearch();
