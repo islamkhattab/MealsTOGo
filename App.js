@@ -11,6 +11,8 @@ import {
 } from "@expo-google-fonts/oswald";
 import { useFonts as useLato, Lato_400Regular } from "@expo-google-fonts/lato";
 
+import { ResturantsContextProvider } from "./src/services/restaurants/restaurants.context";
+
 import { RestuarantsScreen } from "./src/features/restaurants/screens/restaurants.screen";
 import { theme } from "./src/infrastructure/theme";
 import { SettingsScreen } from "./src/features/settings/screens/settings.screen";
@@ -50,18 +52,20 @@ export default function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <NavigationContainer>
-        <Tab.Navigator screenOptions={createScreenOptions}>
-          <Tab.Screen name="Restaurants" component={RestuarantsScreen} />
-          <Tab.Screen name="Map" component={MapScreen} />
-          <Tab.Screen
-            name="Settings"
-            component={SettingsScreen}
-            options={{ tabBarBadge: 3 }}
-          />
-        </Tab.Navigator>
-        <ExpoStatusBar style="auto" />
-      </NavigationContainer>
+      <ResturantsContextProvider>
+        <NavigationContainer>
+          <Tab.Navigator screenOptions={createScreenOptions}>
+            <Tab.Screen name="Restaurants" component={RestuarantsScreen} />
+            <Tab.Screen name="Map" component={MapScreen} />
+            <Tab.Screen
+              name="Settings"
+              component={SettingsScreen}
+              options={{ tabBarBadge: 2 }}
+            />
+          </Tab.Navigator>
+          <ExpoStatusBar style="auto" />
+        </NavigationContainer>
+      </ResturantsContextProvider>
     </ThemeProvider>
   );
 }
