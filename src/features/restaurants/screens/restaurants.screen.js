@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import { TouchableOpacity } from "react-native";
 import { styled } from "styled-components/native";
 import { ActivityIndicator } from "react-native-paper";
 
@@ -29,7 +30,9 @@ const Loading = styled(ActivityIndicator)`
   margin-left: -25px;
 `;
 
-export const RestuarantsScreen = () => {
+export const RestuarantsScreen = ({ navigation }) => {
+  navigation.removeListener();
+
   const { restaurants, isLoading } = useContext(ResturantsContext);
 
   return (
@@ -44,7 +47,13 @@ export const RestuarantsScreen = () => {
         data={restaurants}
         renderItem={({ item }) => (
           <Spacer position={spacerPostitions.bottom} size={spacerSizes.large}>
-            <RestaurantInfoCard restaurant={item} />
+            <TouchableOpacity
+              onPress={() => {
+                navigation.navigate("RestuarantDetail", { restuarant: item });
+              }}
+            >
+              <RestaurantInfoCard restaurant={item} />
+            </TouchableOpacity>
           </Spacer>
         )}
         keyExtractor={(item) => item.placeId}
